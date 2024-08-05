@@ -24,7 +24,7 @@ import static org.mockito.Mockito.when;
 public class CustomUserDetailsServiceTest {
 
     @Mock
-    private UserRepository userRepository;
+    private UserRepository userRepository; 
     @MockBean
     private JwtService jwtService; 
 

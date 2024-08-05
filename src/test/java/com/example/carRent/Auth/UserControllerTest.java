@@ -56,6 +56,8 @@ public class UserControllerTest {
         userDto.setUsername("testUser");
         userDto.setEmail("test@example.com");
         userDto.setFirstName("John");
+                 userDto.setLastName("Doe");
+
 
         when(userService.registerUser(any(RegisterRequest.class))).thenReturn(userDto);
 
@@ -63,7 +65,7 @@ public class UserControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.post("/auth/register")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(registerRequest)))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.status().isCreated())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.username").value("testUser"));
     }
 }
